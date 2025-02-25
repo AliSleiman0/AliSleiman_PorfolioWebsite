@@ -1,9 +1,22 @@
 import { HiArrowDown } from "react-icons/hi";
 import { Link as ScrollLink } from "react-scroll/modules";
 import bgImage from "../assets/bgpattern3.png";
-import profileImage from "../assets/AliProfessional_noBackground.png";
+//import profileImage from "../assets/AliProfessional_noBackground.png";
+import {  Welcome, getWelcome } from "../api/data";
+import { useState, useEffect } from "react";
 
 function Hero() {
+
+	const [data, setData] = useState<Welcome | null>(null);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const data = await getWelcome();
+			setData(data);
+		};
+
+		fetchData();
+	}, []);
 	return (
 		<section id="home">
 			<div
@@ -19,7 +32,7 @@ function Hero() {
 
 				<div className="md:mt-2 md:w-1/2">
 					<img
-						src={profileImage }
+						src={data?.imgSrc} 
 						alt="Profile image"
 						width={320}
 						className="rounded-full shadow-2xl"
@@ -30,15 +43,15 @@ function Hero() {
 						className="heading text-4xl font-bold mt-6 md:mt-0 md:text-5xl 
 									md:whitespace-nowrap md:-ml-4"
 					>
-						Hi, I'm Ali!
+						{data?.title }
 					</h1>
 					<p className="font-semibold text-xl mt-4 mb-6 md:text-2xl">
-						<span className="">I'm a Full-Stack Developer</span>
+						<span className="">{data?.subtitle}</span>
 					</p>
 					<p className="mt-4 mb-10 text-gray-300 md:text-lg">
-						React | TypeScript | .NET | C# | MicroServices | MySQL
+						{data?.skills}
 						<br />
-						HTML | CSS | Bootstrap | TailwindCSS | Swagger | Postman
+		
 					</p>
 					{/* <a*/}
 					{/*	target="_blank"*/}
@@ -75,3 +88,5 @@ function Hero() {
 }
 
 export default Hero;
+
+

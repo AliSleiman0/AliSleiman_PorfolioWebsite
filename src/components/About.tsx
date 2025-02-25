@@ -1,8 +1,21 @@
-import { Link as ScrollLink } from "react-scroll/modules";
+//import { Link as ScrollLink } from "react-scroll/modules";
 import bgImage from "../assets/bgpattern3.png";
 import aboutImage from "../assets/images/about-image2.png";
+import { About as about, getAbout } from "../api/data";
+
+import { useEffect, useState } from "react";
 
 function About() {
+    const [data, setData] = useState<about | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getAbout();
+            setData(data);
+        };
+
+        fetchData();
+    }, []);
     return (
         <section id="about" style={{ position: "relative" }}>
             <div
@@ -22,18 +35,17 @@ function About() {
                         />
                     </h2>
                     <p>
-                        I am a fresh graduate in Computer Engineering from Lebanon, set to complete my bachelor's degree in June 2025. My academic journey has laid a strong foundation in computer science principles, and I am eager to translate my knowledge into practical solutions and innovative projects in the tech industry.</p>
-
-                    <br /> <p>
-                        Over the course of my studies, I have taken proactive steps to deepen my technical expertise. I have completed courses in PHP, C#, and React, which have enriched my understanding of both backend and frontend development. Alongside these courses, I gained hands-on experience through internships-one focusing on web development with PHP and another that involved working with React, TypeScript, .NET, microservices, as well as tools like GitHub and GitControl.
+                        {data?.firstP }
+                    <br /> </p><p>
+                        <br />   {data?.secondP}
                         <br />
                     </p>
 
                     <br />
-                    <p> Currently, I am further broadening my skill set by pursuing a project management course with agile methodologies. This initiative reflects my commitment to not only excel in technical development but also to effectively lead and manage projects in dynamic environments.
+                        <p> {data?.thirdP}
                     </p>
                     <br />
-                    <p> I'm actively looking for new developer roles and <span className="font-bold">open to new opportunities</span> in Lebanon, so feel free to <ScrollLink smooth={true} offset={-100} spy={true} to="contact" className="font-bold text-teal-500 cursor-pointer hover:underline">get in touch</ScrollLink> if you'd like to collaborate or discuss innovative projects.
+                        <p> {data?.fourthP}
                     </p>
 
                 </div>

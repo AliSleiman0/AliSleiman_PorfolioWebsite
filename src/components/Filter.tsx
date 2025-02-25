@@ -7,7 +7,7 @@ type FilterType = {
 
 function Filter({ selectedFilter, setSelectedFilter }: FilterType) {
 	const underlineRef = useRef<HTMLSpanElement>(null);
-	const filters = ["All", ".NET API", "React TS", "PHP"];
+	const filters = ["All", ".NET", "React", "PHP"];
 
 	const updateUnderlinePosition = () => {
 		const activeButton = document.querySelector<HTMLButtonElement>(
