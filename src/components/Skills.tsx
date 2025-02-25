@@ -2,7 +2,9 @@
 import { Skill,  skillsBApi, skillsFApi, skillsGApi } from "../api/data";
 import MagneticButton from "./MagneticButton";
 import { useState, useEffect } from "react";
-
+import  frontend from "/src/assets/images/react.png";
+import backned from "/src/assets/images/backend1.png";
+import general from "/src/assets/images/general.png";
 function Skills() {
     const [dataf, setDataf] = useState<Skill[] | null>(null);
     const [datab, setDatab] = useState<Skill[] | null>(null);
@@ -37,7 +39,7 @@ function Skills() {
                         className="border rounded-lg p-4 flex flex-col items-center max-w-[300px]"
                     >
                         <div className="flex items-center gap-3">
-                            <img src="/src/assets/images/react.png" alt=
+                            <img src={frontend} alt=
                                 "Frontend skills atom icon" width={35} height={35} />
                             <h3 className="text-2xl font-semibold">Front-end</h3>
                         </div>
@@ -61,7 +63,7 @@ function Skills() {
                         className="border rounded-lg p-4 flex flex-col items-center max-w-[300px]"
                     >
                         <div className="flex items-center gap-3">
-                            <img src="/src/assets/images/backend1.png" alt=
+                            <img src={backned} alt=
                                 "Backend skills gear icon" width={35} height={35} />
                             <h3 className="text-2xl font-semibold">Back-end</h3>
                         </div>
@@ -85,8 +87,7 @@ function Skills() {
                         className="border rounded-lg p-4 flex flex-col items-center max-w-[300px]"
                     >
                         <div className="flex items-center gap-3">
-                            <img src=
-                                "/src/assets/images/general.png" alt=
+                            <img src={general} alt=
                                 "General skills icon" width={35} height={35} />
                             <h3 className="text-2xl font-semibold">General Skills</h3>
                         </div>
